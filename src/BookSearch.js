@@ -20,15 +20,28 @@ class BookSearch extends React.Component {
       }
     }
   };
-
+  
+  updateShelfInfo = (searchArr,mainArr) => {
+ searchArr.map((searchBook)=>
+ {
+	 mainArr.map((mainBook)=>
+	 {
+		 if(searchBook.id === mainBook.id)
+		 {
+			 searchBook.shelf = mainBook.shelf
+		 }
+	 });
+ });
+  };
+  
   removeDuplicates = (arr) => {
     const jsonObject = arr.map(JSON.stringify);
 
-    let uniqueSet = new Set(jsonObject);
+    const uniqueSet = new Set(jsonObject);
     arr = Array.from(uniqueSet).map(JSON.parse);
   };
   mergeNoDuplicates = (initialData, newData) => {
-    var ids = new Set(initialData.map((d) => d.id));
+    const ids = new Set(initialData.map((d) => d.id));
     return [...initialData, ...newData.filter((d) => !ids.has(d.id))];
   };
 
@@ -39,6 +52,7 @@ class BookSearch extends React.Component {
       BooksAPI.search(query).then((books) => {
         if (Array.isArray(books)) {
           this.removeDuplicates(books);
+		  this.updateShelfInfo(books,this.props.books)
           this.setState(() => ({
             searchResults: 
               this.filterResults(books)

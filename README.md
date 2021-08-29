@@ -18,7 +18,7 @@ There user also can add new books by navigating to the search page from the bott
 You will need to run the following commands:
 
 npm add react-scripts
-npm install --save react-router-dom
+npm install
 
 -steps to run the projects:
 
