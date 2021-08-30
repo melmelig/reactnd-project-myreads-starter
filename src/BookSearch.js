@@ -24,6 +24,10 @@ class BookSearch extends React.Component {
   updateShelfInfo = (searchArr,mainArr) => {
  searchArr.map((searchBook)=>
  {
+	 
+	 
+	 searchBook.shelf = 'none'
+	 
 	 mainArr.map((mainBook)=>
 	 {
 		 if(searchBook.id === mainBook.id)
@@ -32,7 +36,7 @@ class BookSearch extends React.Component {
 		 }
 		 else
 		 {
-			 searchBook.shelf = 'none'
+			 
 		 }
 	 });
  });
