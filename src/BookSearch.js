@@ -30,6 +30,10 @@ class BookSearch extends React.Component {
 		 {
 			 searchBook.shelf = mainBook.shelf
 		 }
+		 else
+		 {
+			 searchBook.shelf = 'none'
+		 }
 	 });
  });
   };
